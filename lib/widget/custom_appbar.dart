@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        CustomSerachIcon(
+        CustomIcon(
           icon: icon,
         ),
       ],

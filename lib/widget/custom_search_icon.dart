@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomSerachIcon extends StatelessWidget {
-  const CustomSerachIcon({super.key, required this.icon});
+class CustomIcon extends StatelessWidget {
+  const CustomIcon({super.key, required this.icon});
   final Icon icon;
   @override
   Widget build(BuildContext context) {
