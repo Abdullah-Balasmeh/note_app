@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:notesapp/helper/const.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.buttonType});
+  const CustomButton({super.key, required this.buttonType, this.onTap});
   final String buttonType;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 55,
