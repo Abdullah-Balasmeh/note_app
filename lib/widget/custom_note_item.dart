@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:notesapp/model/note_model.dart';
 import 'package:notesapp/views/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({super.key, required this.note});
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,31 +21,32 @@ class NoteItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(bottom: 24, top: 24, left: 16),
         decoration: BoxDecoration(
-            color: const Color(0xffFFCD7A),
-            borderRadius: BorderRadius.circular(16)),
+            color: Color(note.color), borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Text(
-                'Flutter Tips',
-                style: TextStyle(
+              title: Text(
+                note.title,
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 26,
                 ),
               ),
-              subtitle: const Padding(
-                padding: EdgeInsets.only(top: 16.0),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 16.0),
                 child: Text(
-                  'abdullah balasmeh flutter devloper',
-                  style: TextStyle(
+                  note.subTitle,
+                  style: const TextStyle(
                     color: Colors.black45,
                     fontSize: 18,
                   ),
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  note.delete();
+                },
                 icon: const Icon(
                   Icons.delete,
                   color: Colors.black,
@@ -52,14 +54,15 @@ class NoteItem extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                 right: 24,
                 top: 16,
               ),
               child: Text(
-                'June 29,2024',
-                style: TextStyle(
+                // DateFormat.yMMMd().format(note.time as DateTime),
+                note.time,
+                style: const TextStyle(
                   color: Colors.black45,
                   fontSize: 16,
                 ),
